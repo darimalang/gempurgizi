@@ -1,4 +1,3 @@
-<script>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -433,7 +432,7 @@ input{
 </head>
 
 <body>
-  <!-- LOGIN -->
+    <!-- LOGIN -->
 
 <div id="page-login">
 
@@ -610,26 +609,51 @@ input{
     </div>
 
 </div>
-<!-- BASIS DATA -->
+<!-- KALKULATOR -->
 
-<div class="page" id="page-basis">
+<div class="page" id="page-kalkulator">
 
     <h1>
-        🍜 Basis Data Kuliner Malang
+        🧠 Kalkulator Pintar GEMPURGIZI
     </h1>
 
-    <p style="margin-top:10px;">
-        Jelajahi makanan khas Malang beserta
-        kandungan gizi dan cerita di baliknya.
+    <p style="margin-top:10px; line-height:1.8;">
+
+        Upload foto makanan dan biarkan
+        GEMPURGIZI membantu memperkirakan
+        kandungan gizinya.
+
     </p>
 
-    <input
-        type="text"
-        id="search-food"
-        placeholder="Cari makanan..."
-        onkeyup="searchFood()">
+    <div class="card" style="margin-top:25px;">
 
-    <div id="food-container">
+        <h3>
+            🍽 Kenali Isi Piringmu
+        </h3>
+
+        <p style="margin-top:15px;">
+
+            Sistem akan memperkirakan
+            energi dan zat gizi makanan.
+
+        </p>
+
+        <input
+            type="file"
+            id="food-image"
+            accept="image/*">
+
+        <button
+            class="btn-main"
+            onclick="analisisGizi()">
+
+            Analisis
+
+        </button>
+
+    </div>
+
+    <div id="hasil-gizi">
 
     </div>
 
@@ -720,7 +744,8 @@ input{
     </div>
 
 </div>
-const makanan = [
+<script>
+    const makanan = [
 
 {
 nama:"Bakso",
@@ -766,53 +791,62 @@ karbo:"65 g",
 lemak:"14 g",
 deskripsi:"Bahan bakar energi jangka panjang dengan cita rasa super nikmat yang gak pernah ngebosenin! Mi tipis pipih khas Malang yang kenyal sempurna ini dibumbui gurih-asin yang pas, lalu diberi taburan ayam cincang kering bertekstur sangat halus mirip abon."
 },
-  const makanan = [
-
-{
-nama:"Bakso",
-kalori:"350 kkal",
-protein:"18 g",
-karbo:"25 g",
-lemak:"19 g",
-deskripsi:"Comfort food nomor satu yang paling gak bisa ditolak, apalagi pas hawa Malang lagi dingin-dinginnya mendung syahdu! Perpaduan kuah kaldu sapi bening yang gurihnya meresap, butiran bakso halus dan urat yang kenyal, plus kriuknya siomay goreng dan tahu bakso ini bener-bener definisi healing lewat makanan. Gak cuma sukses jadi mood booster instan sehabis pusing seharian belajar di kelas, semangkuk bakso ini ternyata tinggi protein aseli dari daging sapi yang berperan penting sebagai booster otot harianmu sekaligus menjaga energi kamu tetep stabil sampai aktivitas selesai."
+        {
+nama:"Ketan Bubuk",
+kalori:"290 kkal",
+protein:"6 g",
+karbo:"52 g",
+lemak:"7 g",
+deskripsi:"Combo energi padat andalan Arema yang super hits buat nemenin agenda nongkrong malam bareng temen-temen! Perpaduan antara ketan putih yang dimasak super pulen dan gurih serta bubuk kedelai khas Malang."
 },
 
 {
-nama:"Pecel Kawi",
-kalori:"410 kkal",
-protein:"12 g",
-karbo:"58 g",
-lemak:"15 g",
-deskripsi:"Definisi nyata dari sarapan kenyang sehat nan estetik buat memulai hari dengan produktif! Menu legendaris kebanggaan Malang yang menyajikan kumpulan sayur segar kaya serat seperti kangkung, tauge, dan kacang panjang ini disiram dengan saus kacang premium super kental yang punya aroma wangi daun jeruk otentik. Kombinasi juara ini gak cuma ramah banget buat melancarkan pencernaan dan detoks alami tubuh, tapi juga menyumbang pasokan lemak nabati sehat dari kacang tanah yang bikin otak kamu tetep fokus, jernih, dan gak gampang ngantuk pas jam pelajaran pertama dimulai."
+nama:"Orem-Orem",
+kalori:"310 kkal",
+protein:"14 g",
+karbo:"35 g",
+lemak:"13 g",
+deskripsi:"Juara protein nabati lokal yang merakyat tapi punya khasiat yang gak main-main buat tubuh! Kuliner tradisional berkuah santan kuning kental nan kaya rempah ini berisi irisan tempe goreng khas Malang."
 },
 
 {
-nama:"Puthu Lanang",
-kalori:"180 kkal",
-protein:"3 g",
-karbo:"32 g",
-lemak:"5 g",
-deskripsi:"Camilan manis penolak lemas yang legendaris banget dan sudah bertahan melintasi generasi sejak era 1935! Jajanan pasar otentik berupa kue beras lembut yang di dalamnya menyembunyikan lelehan gula jawa murni, lalu dikukus menggunakan pipa bambu tradisional dengan bunyi uapnya yang khas ini disajikan hangat dengan baluran parutan kelapa gurih."
+nama:"Wedang Angsle",
+kalori:"240 kkal",
+protein:"4 g",
+karbo:"43 g",
+lemak:"6 g",
+deskripsi:"Solusi me-time hangat pereda stres paling ampuh setelah seharian lelah beraktivitas di luar rumah! Semangkuk sup manis hangat berkuah santan wangi pandan ini punya isian yang super ramai."
 },
 
 {
-nama:"Rawon",
-kalori:"420 kkal",
-protein:"24 g",
-karbo:"18 g",
-lemak:"28 g",
-deskripsi:"Rajanya zat besi dan protein lokal yang ampuh banget buat menangkal mager dan lesu! Kuliner sup daging hitam khas Jawa Timur yang diolah menggunakan rempah magis bernama kluwek ini menyajikan kuah bold beraroma pekat dengan potongan daging sapi yang super empuk."
+nama:"Tempe Sanan",
+kalori:"160 kkal",
+protein:"5 g",
+karbo:"15 g",
+lemak:"9 g",
+deskripsi:"The ultimate guilt-free snack kebanggaan arek Malang yang renyahnya bikin gak bisa berhenti ngunyah! Keripik tempe yang dipotong super tipis dan digoreng garing dengan balutan tepung berbumbu."
 },
 
 {
-nama:"Cwie Mie",
-kalori:"460 kkal",
-protein:"16 g",
-karbo:"65 g",
-lemak:"14 g",
-deskripsi:"Bahan bakar energi jangka panjang dengan cita rasa super nikmat yang gak pernah ngebosenin! Mi tipis pipih khas Malang yang kenyal sempurna ini dibumbui gurih-asin yang pas, lalu diberi taburan ayam cincang kering bertekstur sangat halus mirip abon."
+nama:"Tahu Lontong",
+kalori:"380 kkal",
+protein:"13 g",
+karbo:"45 g",
+lemak:"16 g",
+deskripsi:"Sajian kilat penahan lapar mata yang super memuaskan dan bikin nagih dari suapan pertama! Potongan tahu yang digoreng setengah matang dipadukan dengan lontong empuk dan saus petis kacang."
 },
-  function tampilMakanan(data){
+
+{
+nama:"Apel Malang",
+kalori:"52 kkal",
+protein:"0.3 g",
+karbo:"14 g",
+lemak:"0.2 g",
+deskripsi:"The ultimate skin investment alami yang segar banget karena dipetik langsung dari kawasan sejuk dataran tinggi Malang-Batu! Buah ikonik berwarna hijau merona dengan tekstur renyah."
+}
+
+];
+    function tampilMakanan(data){
 
     let html = "";
 
@@ -882,258 +916,199 @@ function searchFood(){
     tampilMakanan(hasil);
 
 }
-  const umkm = [
+    const umkm = [
 
 {
 nama:"Bakso Kidul Pasar",
 jenis:"Bakso",
-alamat:"Jl. Halmahera No.12A, Kasin, Kec. Klojen, Kota Malang",
-menu:"Bakso Solo Campur + Pangsit Goreng",
-deskripsi:"Gak paham lagi sama bakso ini, beneran definisi warisan kuliner yang speknya god-tier. Jujur, kuah kaldunya tuh gurih alami yang meaty banget, bukan tipe kuah micin yang bikin haus. Bakso halusnya kenyal pas, dan pangsit gorengnya wajib diadopsi ke mangkok sih. Vibes-nya emang agak crowded, tapi percaya deh, perjuangan antre kamu bakalan kebayar lunas sejak suapan pertama."
+alamat:"Jl. Halmahera No.12A, Kasin, Klojen",
+deskripsi:"Gurih kaldu meaty, bakso kenyal, dan pangsit goreng yang wajib dicoba. Vibes crowded tapi worth it banget.",
+lat:-7.9894,
+lng:112.6281
 },
 
 {
 nama:"Keripik Tempe Rohani Sanan",
 jenis:"Olahan Tempe",
-alamat:"Jl. Sanan No.128, Purwantoro, Kec. Blimbing, Kota Malang",
-menu:"Keripik Tempe Original & Varian Balado",
-deskripsi:"Kalau ke Malang gak beli ini sih rugi parah. Keripik tempe mereka tuh tipisnya konsisten banget dan renyahnya gak bikin gigi sakit. Rempah ketumbarnya berasa otentik dari gigitan pertama."
+alamat:"Jl. Sanan No.128, Blimbing",
+deskripsi:"Keripik super renyah, tipis, dan bikin nagih tanpa henti.",
+lat:-7.9557,
+lng:112.6468
 },
 
 {
 nama:"Mendol & Sambel Tumpang Bu Supiah",
 jenis:"Olahan Tempe",
-alamat:"Area Pasar Oro-oro Dowo",
-menu:"Nasi Sambel Tumpang + Mendol Tempe",
-deskripsi:"Buat yang nyari sarapan lokal murni, kalian harus banget belok ke lapak Bu Supiah di Pasar Oro-oro Dowo. Sambal tumpangnya itu medok, wangi, dan pas ketemu mendol yang bumbu kencurnya berasa banget."
+alamat:"Pasar Oro-oro Dowo",
+deskripsi:"Sambel tumpang medok + mendol kencur yang bikin melek.",
+lat:-7.9688,
+lng:112.6265
 },
 
 {
 nama:"Orem-Orem Arema",
 jenis:"Orem-Orem",
 alamat:"Jl. Galunggung No.56F",
-menu:"Orem-Orem Spesial",
-deskripsi:"Sebagai arek Malang, orem-orem tuh udah kayak jiwa kita. Kuah kuningnya light banget dan comfort food banget."
+deskripsi:"Kuah ringan, comfort food hemat tapi nikmat.",
+lat:-7.9658,
+lng:112.6152
 },
 
 {
 nama:"Pecel Kawi Hj. Musilah",
-jenis:"Nasi Pecel",
+jenis:"Pecel",
 alamat:"Jl. Kawi No.43B",
-menu:"Nasi Pecel Premium",
-deskripsi:"Dari zaman nenek sampai sekarang, pecel kawi emang gak ada tandingannya. Bumbu kacangnya super medok dan sayurnya selalu segar."
-},
-
-{
-nama:"Orem-Orem Ketupat Abah Syahri",
-jenis:"Orem-Orem",
-alamat:"Jl. Gatot Subroto No.72",
-menu:"Orem-Orem Ketupat",
-deskripsi:"Warung kecil yang super autentik dengan kuah yang masih dimasak secara tradisional."
+deskripsi:"Bumbu kacang halus, sayur fresh, legend banget.",
+lat:-7.9774,
+lng:112.6235
 },
 
 {
 nama:"Rawon Brintik",
 jenis:"Rawon",
 alamat:"Jl. KH Ahmad Dahlan No.39",
-menu:"Rawon Daging Sapi",
-deskripsi:"Kuah hitam pekat dari kluwek asli dengan daging yang sangat empuk. Bukan cuma makan siang, tapi menikmati sejarah."
+deskripsi:"Kuah kluwek pekat, daging super empuk.",
+lat:-7.9861,
+lng:112.6311
 },
 
 {
 nama:"Ronde Titoni",
-jenis:"Wedang Tradisional",
+jenis:"Wedang",
 alamat:"Jl. Zainul Arifin No.17",
-menu:"Ronde Campur",
-deskripsi:"Kuah jahenya hangat dan bola rondenya lembut dengan isian kacang tanah yang lumer."
+deskripsi:"Hangat, jahe kuat, cocok malam Malang.",
+lat:-7.9842,
+lng:112.6319
 },
 
 {
 nama:"Sate Ayam Bunul H. Paino",
-jenis:"Sate Ayam",
+jenis:"Sate",
 alamat:"Jl. Hamid Rusdi No.21",
-menu:"Sate Ayam Tanpa Kulit",
-deskripsi:"Potongan daging tebal dan bumbu kacang yang medok membuat sate ini jadi favorit banyak orang."
+deskripsi:"Sate juicy, bumbu kacang medok, super empuk.",
+lat:-7.9734,
+lng:112.6412
 },
 
 {
 nama:"Heci Samaan",
-jenis:"Jajanan Tradisional",
+jenis:"Jajanan",
 alamat:"Jl. Jaksa Agung Suprapto No.50",
-menu:"Heci Spesial",
-deskripsi:"Kulit luar super renyah dengan bagian dalam yang lembut dan gurih."
+deskripsi:"Bakwan Malang versi legend, crispy luar lembut dalam.",
+lat:-7.9655,
+lng:112.6342
+},
+
+{
+nama:"Pecel & Tumpang Badut",
+jenis:"Pecel",
+alamat:"Jl. Candi Badut No.1A",
+deskripsi:"Tumpang fermentasi khas, rasa unik banget.",
+lat:-7.9418,
+lng:112.6155
+},
+
+{
+nama:"Keripik Buah Kane Sanan",
+jenis:"Keripik Buah",
+alamat:"Jl. Sanan No.30",
+deskripsi:"Apel & nangka crispy, sehat, dan estetik.",
+lat:-7.9538,
+lng:112.6452
+},
+
+{
+nama:"Angsle & Ronde Mas Syarif",
+jenis:"Minuman",
+alamat:"Alun-Alun Malang",
+deskripsi:"Angsle creamy + ronde hangat, perfect malam hari.",
+lat:-7.9825,
+lng:112.6308
 }
 
 ];
-  function showUMKM(index){
+
+function showUMKM(index){
 
     const data = umkm[index];
 
-    document.getElementById(
-        "info-panel"
-    ).style.display = "block";
+    document.getElementById("info-panel").style.display="block";
 
-    document.getElementById(
-        "info-panel"
-    ).innerHTML = `
+    document.getElementById("info-panel").innerHTML = `
 
         <h2>${data.nama}</h2>
-
-        <p style="margin-top:15px;">
-        <b>Jenis:</b> ${data.jenis}
-        </p>
-
-        <p style="margin-top:10px;">
-        <b>Alamat:</b> ${data.alamat}
-        </p>
-
-        <p style="margin-top:10px;">
-        <b>Menu Andalan:</b> ${data.menu}
-        </p>
-
-        <p style="margin-top:20px; line-height:1.8;">
-        ${data.deskripsi}
-        </p>
+        <p><b>Jenis:</b> ${data.jenis}</p>
+        <p><b>Alamat:</b> ${data.alamat}</p>
+        <p style="margin-top:10px;">${data.deskripsi}</p>
 
     `;
-
 }
-  function analisisGizi(){
-
-    const hasil = document.getElementById(
-        "hasil-gizi"
-    );
-
-    hasil.innerHTML = `
-
-    <div class="card">
-
-        <h2>
-            🌿 Analisis Nutrisi
-        </h2>
-
-        <p style="margin-top:20px;">
-
-            Sistem memperkirakan bahwa makanan
-            ini memiliki kandungan:
-
-        </p>
-
-        <div class="food-info">
-
-            <div class="food-badge">
-            🔥 420 kkal
-            </div>
-
-            <div class="food-badge">
-            🥩 Protein tinggi
-            </div>
-
-            <div class="food-badge">
-            🌾 Karbohidrat sedang
-            </div>
-
-        </div>
-
-        <p style="margin-top:20px; line-height:1.8;">
-
-            Piring ini tampaknya memberikan
-            energi yang cukup baik untuk
-            aktivitas harian. Tubuhmu mungkin
-            akan berterima kasih atas kombinasi
-            karbohidrat, protein, dan lemaknya.
-
-        </p>
-
-    </div>
-
-    `;
-
-}
-  function loginUser(){
+    function loginUser(){
 
     const nama =
-    document.getElementById(
-        "username"
-    ).value;
+    document.getElementById("username").value.trim();
 
-    if(nama===""){
-
-        alert(
-            "Masukkan nama terlebih dahulu."
-        );
-
+    if(!nama){
+        alert("Isi nama dulu ya!");
         return;
-
     }
 
-    localStorage.setItem(
-        "gempurgizi_user",
-        nama
-    );
+    localStorage.setItem("gempurgizi_user", nama);
 
     startApp();
-
 }
 
 function startApp(){
 
     const nama =
-    localStorage.getItem(
-        "gempurgizi_user"
-    );
+    localStorage.getItem("gempurgizi_user");
 
-    document.getElementById(
-        "page-login"
-    ).style.display = "none";
-
-    document.getElementById(
-        "navbar"
-    ).style.display = "flex";
-
-    document.getElementById(
-        "nama-user"
-    ).innerText = nama;
-
-    tampilMakanan(makanan);
+    document.getElementById("page-login").style.display="none";
+    document.getElementById("navbar").style.display="flex";
+    document.getElementById("nama-user").innerText = nama;
 
     showPage("home");
-
+    tampilMakanan(makanan);
 }
 
 function showPage(page){
 
-    document
-    .querySelectorAll(".page")
-    .forEach(el=>{
-
-        el.style.display =
-        "none";
-
+    document.querySelectorAll(".page").forEach(p=>{
+        p.style.display="none";
     });
 
-    document.getElementById(
-        "page-"+page
-    ).style.display =
-    "block";
-
+    document.getElementById("page-"+page).style.display="block";
 }
 
 window.onload = function(){
 
-    const nama =
-    localStorage.getItem(
-        "gempurgizi_user"
-    );
+    const nama = localStorage.getItem("gempurgizi_user");
 
     if(nama){
-
         startApp();
-
     }
-
 }
-  </script>
+    function analisisGizi(){
+
+    const hasil = document.getElementById("hasil-gizi");
+
+    hasil.innerHTML = `
+
+    <div class="card">
+
+        <h2>🍽 Hasil Analisis</h2>
+
+        <p><b>Estimasi:</b> Makanan ini mengandung energi sedang dengan kombinasi karbohidrat & lemak seimbang.</p>
+
+        <p><b>Vibe Gizi:</b> comfort food yang aman buat hati tapi jangan kebanyakan ya 😌</p>
+
+        <p><b>Copywriting AI:</b> "Is this good for you or nah? Jawabannya: kalau kamu bahagia, maka ini valid."</p>
+
+    </div>
+
+    `;
+}
+    </script>
 
 </body>
 </html>
