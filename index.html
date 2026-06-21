@@ -1,1114 +1,426 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GEMPURGIZI</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-
-    --pink:#FFD8D8;
-    --mustard:#FFD86B;
-    --navy:#23395B;
-    --cream:#FFF8EE;
-    --red:#F05454;
-    --white:#FFFFFF;
-
-}
-
-*{
-
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-
-}
-
-body{
-
-    background:var(--cream);
-
-    font-family:'Space Grotesk',sans-serif;
-
-    color:var(--navy);
-
-}
-
-h1,h2,h3{
-
-    font-family:'Rubik',sans-serif;
-
-}
-
-.page{
-
-    display:none;
-
-    padding:35px;
-
-}
-
-button{
-
-    border:none;
-
-    cursor:pointer;
-
-    font-family:'Rubik';
-
-}
-
-.btn-main{
-
-    background:var(--red);
-
-    color:white;
-
-    padding:14px 30px;
-
-    border-radius:12px;
-
-    border:4px solid var(--navy);
-
-    box-shadow:
-    5px 5px 0 var(--navy);
-
-    font-size:16px;
-
-}
-
-.btn-main:hover{
-
-    transform:translateY(-3px);
-
-}
-
-.card{
-
-    background:white;
-
-    border:4px solid var(--navy);
-
-    border-radius:18px;
-
-    padding:25px;
-
-    box-shadow:
-    7px 7px 0 var(--navy);
-
-}
-
-input{
-
-    width:100%;
-
-    padding:15px;
-
-    margin-top:15px;
-
-    margin-bottom:20px;
-
-    border:3px solid var(--navy);
-
-    border-radius:10px;
-
-    font-size:16px;
-
-}
-
-#page-login{
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
-
-}
-
-.login-box{
-
-    max-width:500px;
-
-    width:100%;
-
-    background:white;
-
-    padding:40px;
-
-    border:5px solid var(--navy);
-
-    border-radius:20px;
-
-    box-shadow:
-    10px 10px 0 var(--navy);
-
-}
-
-.login-box h1{
-
-    font-size:42px;
-
-    margin-bottom:20px;
-
-}
-
-.login-box p{
-
-    line-height:1.7;
-
-    margin-bottom:20px;
-
-}
-
-.navbar{
-
-    display:none;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    background:var(--mustard);
-
-    border-bottom:4px solid var(--navy);
-
-    padding:15px 30px;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-}
-
-.logo{
-
-    font-size:25px;
-
-    font-weight:700;
-
-}
-
-.nav-menu{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-}
-
-.nav-btn{
-
-    background:white;
-
-    border:3px solid var(--navy);
-
-    border-radius:10px;
-
-    padding:10px 18px;
-
-    font-weight:700;
-
-}
-
-.nav-btn:hover{
-
-    background:var(--pink);
-
-}
-
-.hero{
-
-    background:var(--pink);
-
-    padding:35px;
-
-    border:4px solid var(--navy);
-
-    border-radius:20px;
-
-    box-shadow:
-    8px 8px 0 var(--navy);
-
-}
-
-.hero h1{
-
-    font-size:42px;
-
-    margin-bottom:20px;
-
-}
-
-.hero p{
-
-    line-height:1.8;
-
-}
-
-.feature-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:20px;
-
-    margin-top:30px;
-
-}
-
-.feature-box{
-
-    background:white;
-
-    padding:25px;
-
-    border:4px solid var(--navy);
-
-    border-radius:16px;
-
-    box-shadow:
-    6px 6px 0 var(--navy);
-
-}
-
-.feature-box h3{
-
-    margin-bottom:15px;
-
-}
-
-.food-card{
-
-    margin-top:25px;
-
-    background:white;
-
-    border:4px solid var(--navy);
-
-    border-radius:16px;
-
-    padding:25px;
-
-    box-shadow:
-    6px 6px 0 var(--navy);
-
-}
-
-.food-info{
-
-    display:flex;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-    margin:20px 0;
-
-}
-
-.food-badge{
-
-    background:var(--mustard);
-
-    padding:10px 15px;
-
-    border-radius:10px;
-
-    font-weight:700;
-
-}
-
-.food-description{
-
-    line-height:1.8;
-
-}
-
-.retro-map{
-
-    position:relative;
-
-    width:100%;
-
-    height:700px;
-
-    background:#F6E8CF;
-
-    border:5px solid var(--navy);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    margin-top:30px;
-
-}
-
-.map-pin{
-
-    position:absolute;
-
-    width:22px;
-
-    height:22px;
-
-    background:var(--red);
-
-    border:3px solid var(--navy);
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-}
-
-.map-pin:hover{
-
-    transform:scale(1.2);
-
-}
-
-.info-panel{
-
-    margin-top:25px;
-
-    display:none;
-
-}
-
-#hasil-gizi{
-
-    margin-top:30px;
-
-}
-
-@media(max-width:768px){
-
-    .navbar{
-
-        flex-direction:column;
-
-        gap:15px;
-
-    }
-
-    .hero h1{
-
-        font-size:30px;
-
-    }
-
-    .page{
-
-        padding:20px;
-
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEMPURGIZI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- API Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+
+    <style>
+        :root {
+            --pink: #FFD8D8;
+            --mustard: #FFD86B;
+            --navy: #23395B;
+            --cream: #FFF8EE;
+            --red: #F05454;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--cream); font-family: 'Space Grotesk', sans-serif; color: var(--navy); }
+        h1, h2, h3 { font-family: 'Rubik', sans-serif; }
+        
+        .page { display: none; padding: 35px; min-height: calc(100vh - 80px); }
+        button { border: none; cursor: pointer; font-family: 'Rubik'; transition: 0.2s; }
+        
+        .btn-main {
+            background: var(--red); color: white; padding: 14px 30px; 
+            border-radius: 12px; border: 4px solid var(--navy);
+            box-shadow: 5px 5px 0 var(--navy); font-size: 16px; font-weight: 700;
+        }
+        .btn-main:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--navy); }
+        
+        /* Login Page */
+        #page-login { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: var(--cream); }
+        .login-box { max-width: 450px; width: 100%; background: white; padding: 40px; border: 5px solid var(--navy); border-radius: 20px; box-shadow: 10px 10px 0 var(--navy); text-align: center; }
+        .login-box h1 { font-size: 38px; margin-bottom: 15px; color: var(--red); }
+        .login-box input { width: 100%; padding: 15px; margin: 20px 0; border: 3px solid var(--navy); border-radius: 10px; font-size: 16px; text-align: center; }
+
+        /* Navbar */
+        .navbar { display: none; position: sticky; top: 0; z-index: 100; background: var(--mustard); border-bottom: 4px solid var(--navy); padding: 15px 30px; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 700; letter-spacing: 1px; cursor: pointer; }
+        .nav-menu { display: flex; gap: 12px; }
+        .nav-btn { background: white; border: 3px solid var(--navy); border-radius: 10px; padding: 8px 16px; font-weight: 700; color: var(--navy); }
+        .nav-btn:hover { background: var(--pink); }
+
+        /* Home Gateway */
+        .gateway-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .gate-card { background: white; border: 4px solid var(--navy); border-radius: 20px; padding: 30px; box-shadow: 8px 8px 0 var(--navy); text-align: center; cursor: pointer; }
+        .gate-card:hover { transform: translateY(-5px); background: var(--pink); }
+        .gate-card h3 { font-size: 24px; margin-bottom: 15px; }
+
+        /* Basis Data (Kotak Kecil) */
+        .basis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-top: 25px; }
+        .basis-item-card { background: white; border: 4px solid var(--navy); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 5px 5px 0 var(--navy); }
+        .basis-item-card h3 { font-size: 18px; margin-bottom: 15px; }
+        .link-penasaran { color: var(--red); text-decoration: none; font-weight: 700; font-family: 'Rubik'; cursor: pointer; font-size: 14px; }
+        .link-penasaran:hover { text-decoration: underline; }
+
+        /* Detail Makanan & Tabel Gizi */
+        .gizi-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; border: 4px solid var(--navy); border-radius: 12px; overflow: hidden; }
+        .gizi-table th, .gizi-table td { padding: 12px 20px; border: 2px solid var(--navy); text-align: left; }
+        .gizi-table th { background: var(--mustard); font-family: 'Rubik'; }
+        .recommendation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+        .rec-box { background: var(--white); border: 3px solid var(--navy); border-radius: 10px; padding: 15px; text-align: center; font-style: italic; color: #777; }
+
+        /* Peta & Google Maps */
+        .map-wrapper { position: relative; width: 100%; margin-top: 25px; }
+        #map { width: 100%; height: 550px; border: 5px solid var(--navy); border-radius: 20px; box-shadow: 8px 8px 0 var(--navy); }
+        .btn-add-map { position: absolute; bottom: 25px; right: 25px; width: 60px; height: 60px; background: var(--red); border: 4px solid var(--navy); border-radius: 50%; color: white; font-size: 32px; font-weight: bold; display: flex; align-items: center; justify-content: center; box-shadow: 4px 4px 0 var(--navy); z-index: 10; }
+        .btn-add-map:hover { transform: scale(1.1); }
+
+        /* Modal Formulir / Dialog */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(35,57,91,0.6); z-index: 200; justify-content: center; align-items: center; padding: 20px; }
+        .modal-box { background: var(--cream); border: 5px solid var(--navy); border-radius: 20px; max-width: 500px; width: 100%; padding: 30px; box-shadow: 8px 8px 0 var(--navy); position: relative; }
+        .modal-box h3 { font-size: 24px; margin-bottom: 15px; text-align: center; }
+        .modal-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .modal-form input, .modal-form textarea { width: 100%; padding: 10px; margin-bottom: 12px; border: 3px solid var(--navy); border-radius: 8px; font-family: inherit; }
+
+        /* Kalkulator Layout */
+        .calc-card { background: white; border: 4px solid var(--navy); border-radius: 16px; padding: 30px; box-shadow: 7px 7px 0 var(--navy); max-width: 600px; }
+        .result-box { margin-top: 25px; display: none; }
+    </style>
 </head>
-
 <body>
-    <!-- LOGIN -->
 
-<div id="page-login">
-
-    <div class="login-box">
-
-        <h1>
-            🍜 GEMPURGIZI
-        </h1>
-
-        <p>
-
-            Eksplorasi kuliner Malang
-            melalui gizi, budaya,
-            UMKM, dan cerita lokal.
-
-        </p>
-
-        <input
-            type="text"
-            id="username"
-            placeholder="Masukkan nama panggilan">
-
-        <button
-            class="btn-main"
-            onclick="loginUser()">
-
-            MASUK
-
-        </button>
-
+    <!-- 1. HALAMAN LOGIN -->
+    <div id="page-login">
+        <div class="login-box">
+            <h1>🍜 GEMPURGIZI</h1>
+            <p>Eksplorasi kuliner Malang lewat Gizi & Budaya Lokal</p>
+            <input type="text" id="username" placeholder="Masukkan nama panggilanmu...">
+            <button class="btn-main" onclick="loginUser()">MASUK</button>
+        </div>
     </div>
 
-</div>
-
-<!-- NAVBAR -->
-
-<div class="navbar" id="navbar">
-
-    <div class="logo">
-
-        GEMPURGIZI
-
+    <!-- NAVBAR UTAMA -->
+    <div class="navbar" id="navbar">
+        <div class="logo" onclick="showPage('home')">🍜 GEMPURGIZI</div>
+        <div class="nav-menu">
+            <button class="nav-btn" onclick="showPage('home')">Home</button>
+            <button class="nav-btn" onclick="showPage('basis')">Basis Data</button>
+            <button class="nav-btn" onclick="showPage('kalkulator')">Kalkulator Pintar</button>
+            <button class="nav-btn" onclick="showPage('peta')">Peta UMKM</button>
+        </div>
     </div>
 
-    <div class="nav-menu">
-
-        <button
-            class="nav-btn"
-            onclick="showPage('home')">
-
-            Home
-
-        </button>
-
-        <button
-            class="nav-btn"
-            onclick="showPage('basis')">
-
-            Basis Data
-
-        </button>
-
-        <button
-            class="nav-btn"
-            onclick="showPage('kalkulator')">
-
-            Kalkulator Pintar
-
-        </button>
-
-        <button
-            class="nav-btn"
-            onclick="showPage('peta')">
-
-            Peta UMKM
-
-        </button>
-
-    </div>
-
-</div>
-<!-- HOME -->
-
-<div class="page" id="page-home">
-
-    <div class="hero">
-
-        <h1>
-
-            Selamat datang,
-            <span id="nama-user">
-                Explorer
-            </span> 👋
-
-        </h1>
-
-        <p>
-
-            GEMPURGIZI adalah ruang eksplorasi
-            kuliner khas Malang yang
-            menggabungkan budaya,
-            gizi, dan UMKM lokal
-            dalam nuansa retro.
-
-        </p>
-
-    </div>
-
-    <div class="feature-grid">
-
-        <div class="feature-box">
-
-            <h3>
-                🍜 Basis Data
-            </h3>
-
-            <p>
-                11 makanan khas Malang
-                lengkap dengan gizi.
-            </p>
-
-        </div>
-
-        <div class="feature-box">
-
-            <h3>
-                🧠 Kalkulator Pintar
-            </h3>
-
-            <p>
-                Analisis makanan dan
-                estimasi kandungan gizi.
-            </p>
-
-        </div>
-
-        <div class="feature-box">
-
-            <h3>
-                🗺️ Peta UMKM
-            </h3>
-
-            <p>
-                Jelajahi hidden gem
-                kuliner Kota Malang.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-<!-- BASIS DATA -->
-
-<div class="page" id="page-basis">
-
-    <h1>
-        🍜 Basis Data Kuliner Malang
-    </h1>
-
-    <p style="margin-top:10px;">
-        Jelajahi makanan khas Malang beserta
-        kandungan gizi dan cerita di baliknya.
-    </p>
-
-    <input
-        type="text"
-        id="search-food"
-        placeholder="Cari makanan..."
-        onkeyup="searchFood()">
-
-    <div id="food-container">
-
-    </div>
-
-</div>
-<!-- KALKULATOR -->
-
-<div class="page" id="page-kalkulator">
-
-    <h1>
-        🧠 Kalkulator Pintar GEMPURGIZI
-    </h1>
-
-    <p style="margin-top:10px; line-height:1.8;">
-
-        Upload foto makanan dan biarkan
-        GEMPURGIZI membantu memperkirakan
-        kandungan gizinya.
-
-    </p>
-
-    <div class="card" style="margin-top:25px;">
-
-        <h3>
-            🍽 Kenali Isi Piringmu
-        </h3>
-
-        <p style="margin-top:15px;">
-
-            Sistem akan memperkirakan
-            energi dan zat gizi makanan.
-
-        </p>
-
-        <input
-            type="file"
-            id="food-image"
-            accept="image/*">
-
-        <button
-            class="btn-main"
-            onclick="analisisGizi()">
-
-            Analisis
-
-        </button>
-
-    </div>
-
-    <div id="hasil-gizi">
-
-    </div>
-
-</div>
-<!-- PETA UMKM -->
-
-<div class="page" id="page-peta">
-
-    <h1>
-        🗺️ Peta Retro Kuliner Malang
-    </h1>
-
-    <p style="margin-top:10px;">
-
-        Jelajahi hidden gem kuliner Malang
-        melalui peta interaktif GEMPURGIZI.
-
-    </p>
-
-    <div class="retro-map">
-
-        <div
-            class="map-pin"
-            style="top:48%;left:45%;"
-            onclick="showUMKM(0)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:35%;left:60%;"
-            onclick="showUMKM(1)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:40%;left:48%;"
-            onclick="showUMKM(2)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:50%;left:42%;"
-            onclick="showUMKM(3)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:55%;left:47%;"
-            onclick="showUMKM(4)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:38%;left:65%;"
-            onclick="showUMKM(5)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:52%;left:50%;"
-            onclick="showUMKM(6)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:54%;left:52%;"
-            onclick="showUMKM(7)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:32%;left:63%;"
-            onclick="showUMKM(8)">
-        </div>
-
-        <div
-            class="map-pin"
-            style="top:53%;left:49%;"
-            onclick="showUMKM(9)">
-        </div>
-
-    </div>
-
-    <div
-        class="card info-panel"
-        id="info-panel">
-
-    </div>
-
-</div>
-<script>
-    const makanan = [
-
-{
-nama:"Bakso",
-kalori:"350 kkal",
-protein:"18 g",
-karbo:"25 g",
-lemak:"19 g",
-deskripsi:"Comfort food nomor satu yang paling gak bisa ditolak, apalagi pas hawa Malang lagi dingin-dinginnya mendung syahdu! Perpaduan kuah kaldu sapi bening yang gurihnya meresap, butiran bakso halus dan urat yang kenyal, plus kriuknya siomay goreng dan tahu bakso ini bener-bener definisi healing lewat makanan. Gak cuma sukses jadi mood booster instan sehabis pusing seharian belajar di kelas, semangkuk bakso ini ternyata tinggi protein aseli dari daging sapi yang berperan penting sebagai booster otot harianmu sekaligus menjaga energi kamu tetep stabil sampai aktivitas selesai."
-},
-
-{
-nama:"Pecel Kawi",
-kalori:"410 kkal",
-protein:"12 g",
-karbo:"58 g",
-lemak:"15 g",
-deskripsi:"Definisi nyata dari sarapan kenyang sehat nan estetik buat memulai hari dengan produktif! Menu legendaris kebanggaan Malang yang menyajikan kumpulan sayur segar kaya serat seperti kangkung, tauge, dan kacang panjang ini disiram dengan saus kacang premium super kental yang punya aroma wangi daun jeruk otentik. Kombinasi juara ini gak cuma ramah banget buat melancarkan pencernaan dan detoks alami tubuh, tapi juga menyumbang pasokan lemak nabati sehat dari kacang tanah yang bikin otak kamu tetep fokus, jernih, dan gak gampang ngantuk pas jam pelajaran pertama dimulai."
-},
-
-{
-nama:"Puthu Lanang",
-kalori:"180 kkal",
-protein:"3 g",
-karbo:"32 g",
-lemak:"5 g",
-deskripsi:"Camilan manis penolak lemas yang legendaris banget dan sudah bertahan melintasi generasi sejak era 1935! Jajanan pasar otentik berupa kue beras lembut yang di dalamnya menyembunyikan lelehan gula jawa murni, lalu dikukus menggunakan pipa bambu tradisional dengan bunyi uapnya yang khas ini disajikan hangat dengan baluran parutan kelapa gurih."
-},
-
-{
-nama:"Rawon",
-kalori:"420 kkal",
-protein:"24 g",
-karbo:"18 g",
-lemak:"28 g",
-deskripsi:"Rajanya zat besi dan protein lokal yang ampuh banget buat menangkal mager dan lesu! Kuliner sup daging hitam khas Jawa Timur yang diolah menggunakan rempah magis bernama kluwek ini menyajikan kuah bold beraroma pekat dengan potongan daging sapi yang super empuk."
-},
-
-{
-nama:"Cwie Mie",
-kalori:"460 kkal",
-protein:"16 g",
-karbo:"65 g",
-lemak:"14 g",
-deskripsi:"Bahan bakar energi jangka panjang dengan cita rasa super nikmat yang gak pernah ngebosenin! Mi tipis pipih khas Malang yang kenyal sempurna ini dibumbui gurih-asin yang pas, lalu diberi taburan ayam cincang kering bertekstur sangat halus mirip abon."
-},
-        {
-nama:"Ketan Bubuk",
-kalori:"290 kkal",
-protein:"6 g",
-karbo:"52 g",
-lemak:"7 g",
-deskripsi:"Combo energi padat andalan Arema yang super hits buat nemenin agenda nongkrong malam bareng temen-temen! Perpaduan antara ketan putih yang dimasak super pulen dan gurih serta bubuk kedelai khas Malang."
-},
-
-{
-nama:"Orem-Orem",
-kalori:"310 kkal",
-protein:"14 g",
-karbo:"35 g",
-lemak:"13 g",
-deskripsi:"Juara protein nabati lokal yang merakyat tapi punya khasiat yang gak main-main buat tubuh! Kuliner tradisional berkuah santan kuning kental nan kaya rempah ini berisi irisan tempe goreng khas Malang."
-},
-
-{
-nama:"Wedang Angsle",
-kalori:"240 kkal",
-protein:"4 g",
-karbo:"43 g",
-lemak:"6 g",
-deskripsi:"Solusi me-time hangat pereda stres paling ampuh setelah seharian lelah beraktivitas di luar rumah! Semangkuk sup manis hangat berkuah santan wangi pandan ini punya isian yang super ramai."
-},
-
-{
-nama:"Tempe Sanan",
-kalori:"160 kkal",
-protein:"5 g",
-karbo:"15 g",
-lemak:"9 g",
-deskripsi:"The ultimate guilt-free snack kebanggaan arek Malang yang renyahnya bikin gak bisa berhenti ngunyah! Keripik tempe yang dipotong super tipis dan digoreng garing dengan balutan tepung berbumbu."
-},
-
-{
-nama:"Tahu Lontong",
-kalori:"380 kkal",
-protein:"13 g",
-karbo:"45 g",
-lemak:"16 g",
-deskripsi:"Sajian kilat penahan lapar mata yang super memuaskan dan bikin nagih dari suapan pertama! Potongan tahu yang digoreng setengah matang dipadukan dengan lontong empuk dan saus petis kacang."
-},
-
-{
-nama:"Apel Malang",
-kalori:"52 kkal",
-protein:"0.3 g",
-karbo:"14 g",
-lemak:"0.2 g",
-deskripsi:"The ultimate skin investment alami yang segar banget karena dipetik langsung dari kawasan sejuk dataran tinggi Malang-Batu! Buah ikonik berwarna hijau merona dengan tekstur renyah."
-}
-
-];
-    function tampilMakanan(data){
-
-    let html = "";
-
-    data.forEach(item=>{
-
-        html += `
-
-        <div class="food-card">
-
-            <h2>${item.nama}</h2>
-
-            <div class="food-info">
-
-                <div class="food-badge">
-                🔥 ${item.kalori}
-                </div>
-
-                <div class="food-badge">
-                🥩 ${item.protein}
-                </div>
-
-                <div class="food-badge">
-                🌾 ${item.karbo}
-                </div>
-
-                <div class="food-badge">
-                🥑 ${item.lemak}
-                </div>
-
+    <!-- 2. HOME GATEWAY (Hanya berisi 3 pintu masuk pokok) -->
+    <div class="page" id="page-home">
+        <h1 style="font-size: 36px; text-align: center; margin-top: 10px;">Halo, <span id="user-display">Explorer</span>! Mau ke mana hari ini? 👋</h1>
+        <div class="gateway-container">
+            <div class="gate-card" onclick="showPage('basis')">
+                <h3>📚 Basis Data</h3>
+                <p>Eksplorasi kandungan gizi mendalam & kisah historis di balik 11 menu legendaris Malang.</p>
             </div>
-
-            <p class="food-description">
-                ${item.deskripsi}
-            </p>
-
+            <div class="gate-card" onclick="showPage('kalkulator')">
+                <h3>🧠 Kalkulator Pintar</h3>
+                <p>Uji foto makanan pilihanmu menggunakan AI canggih pendeteksi makronutrisi harian.</p>
+            </div>
+            <div class="gate-card" onclick="showPage('peta')">
+                <h3>🗺️ Peta UMKM</h3>
+                <p>Temukan ratusan hidden gem kuliner lokal yang tersebar di wilayah Malang Raya.</p>
+            </div>
         </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-        "food-container"
-    ).innerHTML = html;
-
-}
-
-function searchFood(){
-
-    const keyword =
-    document
-    .getElementById(
-        "search-food"
-    )
-    .value
-    .toLowerCase();
-
-    const hasil =
-    makanan.filter(item=>
-
-        item.nama
-        .toLowerCase()
-        .includes(keyword)
-
-    );
-
-    tampilMakanan(hasil);
-
-}
-    const umkm = [
-
-{
-nama:"Bakso Kidul Pasar",
-jenis:"Bakso",
-alamat:"Jl. Halmahera No.12A, Kasin, Klojen",
-deskripsi:"Gurih kaldu meaty, bakso kenyal, dan pangsit goreng yang wajib dicoba. Vibes crowded tapi worth it banget.",
-lat:-7.9894,
-lng:112.6281
-},
-
-{
-nama:"Keripik Tempe Rohani Sanan",
-jenis:"Olahan Tempe",
-alamat:"Jl. Sanan No.128, Blimbing",
-deskripsi:"Keripik super renyah, tipis, dan bikin nagih tanpa henti.",
-lat:-7.9557,
-lng:112.6468
-},
-
-{
-nama:"Mendol & Sambel Tumpang Bu Supiah",
-jenis:"Olahan Tempe",
-alamat:"Pasar Oro-oro Dowo",
-deskripsi:"Sambel tumpang medok + mendol kencur yang bikin melek.",
-lat:-7.9688,
-lng:112.6265
-},
-
-{
-nama:"Orem-Orem Arema",
-jenis:"Orem-Orem",
-alamat:"Jl. Galunggung No.56F",
-deskripsi:"Kuah ringan, comfort food hemat tapi nikmat.",
-lat:-7.9658,
-lng:112.6152
-},
-
-{
-nama:"Pecel Kawi Hj. Musilah",
-jenis:"Pecel",
-alamat:"Jl. Kawi No.43B",
-deskripsi:"Bumbu kacang halus, sayur fresh, legend banget.",
-lat:-7.9774,
-lng:112.6235
-},
-
-{
-nama:"Rawon Brintik",
-jenis:"Rawon",
-alamat:"Jl. KH Ahmad Dahlan No.39",
-deskripsi:"Kuah kluwek pekat, daging super empuk.",
-lat:-7.9861,
-lng:112.6311
-},
-
-{
-nama:"Ronde Titoni",
-jenis:"Wedang",
-alamat:"Jl. Zainul Arifin No.17",
-deskripsi:"Hangat, jahe kuat, cocok malam Malang.",
-lat:-7.9842,
-lng:112.6319
-},
-
-{
-nama:"Sate Ayam Bunul H. Paino",
-jenis:"Sate",
-alamat:"Jl. Hamid Rusdi No.21",
-deskripsi:"Sate juicy, bumbu kacang medok, super empuk.",
-lat:-7.9734,
-lng:112.6412
-},
-
-{
-nama:"Heci Samaan",
-jenis:"Jajanan",
-alamat:"Jl. Jaksa Agung Suprapto No.50",
-deskripsi:"Bakwan Malang versi legend, crispy luar lembut dalam.",
-lat:-7.9655,
-lng:112.6342
-},
-
-{
-nama:"Pecel & Tumpang Badut",
-jenis:"Pecel",
-alamat:"Jl. Candi Badut No.1A",
-deskripsi:"Tumpang fermentasi khas, rasa unik banget.",
-lat:-7.9418,
-lng:112.6155
-},
-
-{
-nama:"Keripik Buah Kane Sanan",
-jenis:"Keripik Buah",
-alamat:"Jl. Sanan No.30",
-deskripsi:"Apel & nangka crispy, sehat, dan estetik.",
-lat:-7.9538,
-lng:112.6452
-},
-
-{
-nama:"Angsle & Ronde Mas Syarif",
-jenis:"Minuman",
-alamat:"Alun-Alun Malang",
-deskripsi:"Angsle creamy + ronde hangat, perfect malam hari.",
-lat:-7.9825,
-lng:112.6308
-}
-
-];
-
-function showUMKM(index){
-
-    const data = umkm[index];
-
-    document.getElementById("info-panel").style.display="block";
-
-    document.getElementById("info-panel").innerHTML = `
-
-        <h2>${data.nama}</h2>
-        <p><b>Jenis:</b> ${data.jenis}</p>
-        <p><b>Alamat:</b> ${data.alamat}</p>
-        <p style="margin-top:10px;">${data.deskripsi}</p>
-
-    `;
-}
-    function loginUser(){
-
-    const nama =
-    document.getElementById("username").value.trim();
-
-    if(!nama){
-        alert("Isi nama dulu ya!");
-        return;
-    }
-
-    localStorage.setItem("gempurgizi_user", nama);
-
-    startApp();
-}
-
-function startApp(){
-
-    const nama =
-    localStorage.getItem("gempurgizi_user");
-
-    document.getElementById("page-login").style.display="none";
-    document.getElementById("navbar").style.display="flex";
-    document.getElementById("nama-user").innerText = nama;
-
-    showPage("home");
-    tampilMakanan(makanan);
-}
-
-function showPage(page){
-
-    document.querySelectorAll(".page").forEach(p=>{
-        p.style.display="none";
-    });
-
-    document.getElementById("page-"+page).style.display="block";
-}
-
-window.onload = function(){
-
-    const nama = localStorage.getItem("gempurgizi_user");
-
-    if(nama){
-        startApp();
-    }
-}
-    function analisisGizi(){
-
-    const hasil = document.getElementById("hasil-gizi");
-
-    hasil.innerHTML = `
-
-    <div class="card">
-
-        <h2>🍽 Hasil Analisis</h2>
-
-        <p><b>Estimasi:</b> Makanan ini mengandung energi sedang dengan kombinasi karbohidrat & lemak seimbang.</p>
-
-        <p><b>Vibe Gizi:</b> comfort food yang aman buat hati tapi jangan kebanyakan ya 😌</p>
-
-        <p><b>Copywriting AI:</b> "Is this good for you or nah? Jawabannya: kalau kamu bahagia, maka ini valid."</p>
-
     </div>
 
-    `;
-}
-    </script>
+    <!-- 3. BASIS DATA (Halaman Utama Daftar Kotak Kecil) -->
+    <div class="page" id="page-basis">
+        <h1>📚 Basis Data Gizi Kuliner</h1>
+        <p style="margin-top: 5px;">Klik "Penasaran?" untuk melihat rincian tabel nutrisi makro yang estetik.</p>
+        <div class="basis-grid" id="basis-container"></div>
+    </div>
 
+    <!-- 4. DETAIL BASIS DATA (Sub-Page Individual) -->
+    <div class="page" id="page-detail-basis">
+        <button class="nav-btn" onclick="showPage('basis')" style="margin-bottom: 20px;">← Kembali ke Daftar</button>
+        <div class="gate-card" style="text-align: left; background: white;">
+            <h1 id="det-nama" style="font-size: 36px; color: var(--red);"></h1>
+            <p id="det-deskripsi" style="margin: 20px 0; line-height: 1.8;"></p>
+            
+            <h3 style="margin-top: 25px;">📊 Tabel Kandungan Nutrisi</h3>
+            <table class="gizi-table">
+                <thead>
+                    <tr>
+                        <th>Nutrisi</th>
+                        <th>Jumlah Standar Konsumsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>🔥 Kalori</td><td id="det-kalori" style="font-weight: 700;"></td></tr>
+                    <tr><td>🥩 Protein</td><td id="det-protein"></td></tr>
+                    <tr><td>🌾 Karbohidrat</td><td id="det-karbo"></td></tr>
+                    <tr><td>🥑 Lemak</td><td id="det-lemak"></td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 30px;">📌 You Can Find This In...</h3>
+            <div class="recommendation-grid">
+                <div class="rec-box">Rekomendasi Toko 1<br>(Coming Soon)</div>
+                <div class="rec-box">Rekomendasi Toko 2<br>(Coming Soon)</div>
+                <div class="rec-box">Rekomendasi Toko 3<br>(Coming Soon)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. KALKULATOR PINTAR -->
+    <div class="page" id="page-kalkulator">
+        <h1>🧠 Kalkulator Gizi Berbasis AI</h1>
+        <p style="margin-top: 5px; margin-bottom: 25px;">Ambil gambar hidangan piringmu untuk kalkulasi otomatis.</p>
+        <div class="calc-card">
+            <h3>📸 Masukkan Foto Hidangan</h3>
+            <input type="file" id="calc-file" accept="image/*" style="margin: 20px 0; width: 100%;">
+            <button class="btn-main" onclick="prosesKalkulatorAI()">Kirim ke AI</button>
+        </div>
+        
+        <div class="result-box" id="calc-result"></div>
+    </div>
+
+    <!-- 6. PETA UMKM (Google Maps Terintegrasi) -->
+    <div class="page" id="page-peta">
+        <h1>🗺️ Peta Kuliner UMKM Malang</h1>
+        <p style="margin-top: 5px;">Klik penanda merah di peta untuk melihat info kuliner otentik.</p>
+        <div class="map-wrapper">
+            <div id="map"></div>
+            <button class="btn-add-map" onclick="triggerHiddenGemPrompt()">+</button>
+        </div>
+    </div>
+
+    <!-- MODAL DIALOG POPUP (Want to Share) -->
+    <div class="modal-overlay" id="modal-prompt">
+        <div class="modal-box">
+            <h3>Want to share your hidden gem? ✨</h3>
+            <p style="text-align: center; margin-bottom: 20px; line-height: 1.6;">Bantu pengguna lain menemukan kuliner lezat favoritmu di Malang Raya!</p>
+            <div class="modal-buttons">
+                <button class="btn-main" onclick="openFormulirModal()">Yes</button>
+                <button class="nav-btn" style="border: 3px solid var(--navy); padding: 12px 25px;" onclick="closeModal('modal-prompt')">Not Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FORMULIR TAMBAH UMKM -->
+    <div class="modal-overlay" id="modal-form">
+        <div class="modal-box modal-form" style="max-width: 550px;">
+            <h3>Formulir Tambah Kuliner Baru</h3>
+            <input type="text" id="form-nama" placeholder="Nama Tempat / Warung">
+            <input type="text" id="form-kuliner" placeholder="Jenis Kuliner (Contoh: Bakso, Rawon)">
+            <input type="text" id="form-alamat" placeholder="Alamat Lengkap">
+            <input type="text" id="form-koordinat" placeholder="Koordinat (Contoh: -7.9894, 112.6281)">
+            <input type="text" id="form-menu" placeholder="Menu Andalan Utama">
+            <textarea id="form-deskripsi" rows="3" placeholder="Review Singkat / Deskripsi Usaha"></textarea>
+            <div class="modal-buttons">
+                <button class="btn-main" onclick="simpanUMKMBaru()">Submit Data</button>
+                <button class="nav-btn" style="border: 3px solid var(--navy);" onclick="closeModal('modal-form')">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database 11 Makanan Utama
+        const basisDataMakanan = [
+            { nama: "Bakso", kalori: "350 kkal", protein: "18 g", karbo: "25 g", lemak: "19 g", deskripsi: "Comfort food nomor satu yang paling gak bisa ditolak, apalagi pas hawa Malang lagi dingin-dinginnya mendung syahdu! Perpaduan kuah kaldu sapi bening yang gurihnya meresap, butiran bakso halus dan urat yang kenyal, plus kriuknya siomay goreng dan tahu bakso ini bener-bener definisi healing lewat makanan. Gak cuma sukses jadi mood booster instan sehabis pusing seharian belajar di kelas, semangkuk bakso ini ternyata tinggi protein aseli dari daging sapi yang berperan penting sebagai booster otot harianmu sekaligus menjaga energi kamu tetep stabil sampai aktivitas selesai." },
+            { nama: "Pecel Kawi", kalori: "410 kkal", protein: "12 g", karbo: "58 g", lemak: "15 g", deskripsi: "Definisi nyata dari sarapan kenyang sehat nan estetik buat memulai hari dengan produktif! Menu legendaris kebanggaan Malang yang menyajikan kumpulan sayur segar kaya serat seperti kangkung, tauge, dan kacang panjang ini disiram dengan saus kacang premium super kental yang punya aroma wangi daun jeruk otentik. Kombinasi juara ini gak cuma ramah banget buat melancarkan pencernaan dan detoks alami tubuh, tapi juga menyumbang pasokan lemak nabati sehat dari kacang tanah yang bikin otak kamu tetep fokus, jernih, dan gak gampang ngantuk pas jam pelajaran pertama dimulai." },
+            { nama: "Puthu Lanang", kalori: "180 kkal", protein: "3 g", karbo: "32 g", lemak: "5 g", deskripsi: "Camilan manis penolak lemas yang legendaris banget dan sudah bertahan melintasi generasi sejak era 1935! Jajanan pasar otentik berupa kue beras lembut yang di dalamnya menyembunyikan lelehan gula jawa murni, lalu dikukus menggunakan pipa bambu tradisional dengan bunyi uapnya yang khas ini disajikan hangat dengan baluran parutan kelapa gurih. Dari segi nutrisi, kue puthu ini punya pasokan karbohidrat ringan yang cepet banget diserap oleh tubuh, menjadikannya pilihan paling tepat sebagai sumber energi instan penambah stamina pas kamu lagi ngerasa burnout atau butuh sugar rush sehat di tengah padatnya jadwal harian." },
+            { nama: "Rawon", kalori: "420 kkal", protein: "24 g", karbo: "18 g", lemak: "28 g", deskripsi: "Rajanya zat besi dan protein lokal yang ampuh banget buat menangkal mager dan lesu! Kuliner sup daging hitam khas Jawa Timur yang diolah menggunakan rempah magis bernama kluwek ini menyajikan kuah bold beraroma pekat dengan potongan daging sapi yang super empuk, ditemani tauge kecil yang renyah dan sambal terasi. Selain memanjakan lidah dengan cita rasa rempahnya yang rich, kandungan zat besi melimpah di dalam daging sapinya sangat efektif buat mencegah anemia, sedangkan antioksidan dari rempah-rempah alaminya aktif bekerja menjaga sistem imun tubuh kamu biar gak gampang drop." },
+            { nama: "Cwie Mie", kalori: "460 kkal", protein: "16 g", karbo: "65 g", lemak: "14 g", deskripsi: "Bahan bakar energi jangka panjang dengan cita rasa super nikmat yang gak pernah ngebosenin! Mi tipis pipih khas Malang yang kenyal sempurna ini dibumbui gurih-asin yang pas, lalu diberi taburan ayam cincang kering bertekstur sangat halus mirip abon, serta ditemani segarnya daun selada dan pangsit kriuk di sampingnya. Porsi karbohidrat kompleks dari mi ini siap dilepaskan secara berkala menjadi pasokan energi konstan biar kamu tetep aktif, ditambah dengan kandungan protein dari ayam cincangnya yang ngebantu mencukupi target makronutrisi harian kamu dengan cara yang paling lezat." },
+            { nama: "Ketan Bubuk", kalori: "290 kkal", protein: "6 g", karbo: "52 g", lemak: "7 g", deskripsi: "Combo energi padat andalan Arema yang super hits buat nemenin agenda nongkrong malam bareng temen-temen! Perpaduan antara ketan putih yang dimasak super pulen dan gurih, parutan kelapa muda yang segar, serta manis-gurihnya taburan bubuk kedelai kedelai khas Malang ini menciptakan harmoni rasa tradisional yang bikin kangen. Kandungan karbohidratnya yang padat dijamin bikin perut kenyang tahan lama tanpa bikin begah, sekaligus memberikan bonus asupan protein nabati alami tingkat tinggi dari bubuk kedelainya yang bagus banget buat regenerasi sel tubuh kamu." },
+            { nama: "Orem-Orem", kalori: "310 kkal", protein: "14 g", karbo: "35 g", lemak: "13 g", deskripsi: "Juara protein nabati lokal yang merakyat tapi punya khasiat yang gak main-main buat tubuh! Kuliner tradisional berkuah santan kuning kental nan kaya rempah ini berisi irisan tempe goreng khas Malang dan tahu empuk yang disajikan di atas potongan lontong padat. Karena menggunakan bahan utama tempe yang sudah melalui proses fermentasi alami, orem-orem ini sangat kaya akan senyawa isoflavon dan antioksidan yang gak cuma ramah banget buat kesehatan usus, tapi juga ampuh menjaga sel-sel tubuh dari radikal bebas akibat polusi jalanan." },
+            { nama: "Wedang Angsle", kalori: "240 kkal", protein: "4 g", karbo: "43 g", lemak: "6 g", deskripsi: "Solusi me-time hangat pereda stres paling ampuh setelah seharian lelah beraktivitas di luar rumah! Semangkuk sup manis hangat berkuah santan wangi pandan ini punya isian yang super ramai dan meriah, mulai dari petulo yang kenyal, ketan, kacang hijau, kolang-kaling, sampai potongan roti tawar yang menyerap kuah. Efek hangat alami yang dihasilkan oleh sari jahe di dalam kuahnya terbukti secara ilmiah bisa merilekskan otot-otot yang tegang, melancarkan sirkulasi darah, melegakan tenggorokan, dan bikin kualitas tidur kamu malam ini jadi jauh lebih nyenyak." },
+            { nama: "Tempe Sanan", kalori: "160 kkal", protein: "5 g", karbo: "15 g", lemak: "9 g", deskripsi: "The ultimate guilt-free snack kebanggaan arek Malang yang renyahnya bikin gak bisa berhenti ngunyah! Keripik tempe yang dipotong super tipis dan digoreng garing dengan balutan tepung berbumbu bawang, ketumbar, serta irisan daun jeruk segar ini menghasilkan aroma yang harum dan rasa yang gurih otentik. Menariknya, camilan ini jauh lebih sehat dari keripik kemasan biasa karena tinggi akan kandungan protein pangan dan serat hasil fermentasi kedelai asli, sehingga aman banget dikonsumsi kapan saja buat nemenin waktu belajar tanpa perlu takut berat badan naik." },
+            { nama: "Tahu Lontong", kalori: "380 kkal", protein: "13 g", karbo: "45 g", lemak: "16 g", deskripsi: "Sajian kilat penahan lapar mata yang super memuaskan dan bikin nagih dari suapan pertama! Potongan tahu yang digoreng setengah matang sehingga bagian dalamnya tetep lembut dipadukan dengan lontong empuk, lalu disiram saus petis kacang yang kental, gurih, agak manis, dan sedikit pedas, tak lupa diberi taburan bawang goreng melimpah. Menu ini menghadirkan kombinasi seimbang antara karbohidrat instan dari lontong dan protein tinggi dari tahu bumbunya, menghasilkan efek mengenyangkan yang stabil sehingga tingkat gula darah kamu gak fluktuatif dan bikin kamu terhindar dari lemas di tengah hari." },
+            { nama: "Apel Malang", kalori: "52 kkal", protein: "0.3 g", karbo: "14 g", lemak: "0.2 g", deskripsi: "The ultimate skin investment alami yang segar banget karena dipetik langsung dari kawasan sejuk dataran tinggi Malang-Batu! Buah ikonik berwarna hijau merona dengan tekstur daging yang super renyah dan rasa manis-asam yang unik ini kaya akan kandungan vitamin C konsentrasi tinggi serta antioksidan esensial. Mengonsumsi apel ini secara rutin gak cuma bikin kulit kamu kelihatan bersih, cerah, dan segar sehat, tapi kandungan kalorinya yang sangat rendah juga menjadikannya buah penetralisir yang paling sempurna sehabis kamu puas berburu kuliner berat di kota Malang." }
+        ];
+
+        // Database Peta Terstruktur
+        let databaseUMKM = [
+            { nama: "Bakso Kidul Pasar", jenis: "Bakso", koordinat: { lat: -7.9894, lng: 112.6281 }, alamat: "Jl. Halmahera No.12A, Kasin, Kec. Klojen", menu: "Bakso Solo Campur + Pangsit Goreng", deskripsi: "Gak paham lagi sama bakso ini, beneran definisi warisan kuliner yang speknya god-tier. Kuah kaldunya meaty alami." },
+            { nama: "Keripik Tempe Rohani Sanan", jenis: "Olahan Tempe", koordinat: { lat: -7.9557, lng: 112.6468 }, alamat: "Jl. Sanan No.128, Purwantoro, Kec. Blimbing", menu: "Keripik Tempe Original & Varian Balado", deskripsi: "Keripik tempe tipis konsisten dan renyah. Rempah ketumbarnya berasa otentik dari gigitan pertama." },
+            { nama: "Mendol & Sambel Tumpang Bu Supiah", jenis: "Olahan Tempe", koordinat: { lat: -7.9688, lng: 112.6265 }, alamat: "Area Pasar Oro-oro Dowo, Jl. Guntur", menu: "Nasi Sambel Tumpang + Mendol Tempe", deskripsi: "Sambal tumpangnya medok, wangi, pas ketemu mendol yang kencurnya kuat." },
+            { nama: "Orem-Orem Arema", jenis: "Orem-Orem", koordinat: { lat: -7.9658, lng: 112.6152 }, alamat: "Jl. Galunggung No.56F, Gading Kasri", menu: "Orem-Orem Spesial Lauk Telur Asin & Ayam", deskripsi: "Kuah kuningnya light banget, gak bikin enek sama sekali walau dasarnya santan." },
+            { nama: "Pecel Kawi Hj. Musilah", jenis: "Nasi Pecel", koordinat: { lat: -7.9774, lng: 112.6235 }, alamat: "Jl. Kawi No.43B, Bareng, Kec. Klojen", menu: "Nasi Pecel Premium + Lauk Empal Daging", deskripsi: "Bumbu kacang diolah halus, kental, dan ada hint manis gurih premium." },
+            { nama: "Orem-Orem Ketupat Abah Syahri", jenis: "Orem-Orem", koordinat: { lat: -7.9868, lng: 112.6372 }, alamat: "Jl. Gatot Subroto No.72, Jodipan", menu: "Orem-Orem Ketupat Dan Tempe Goreng", deskripsi: "Masih mempertahankan cara masak tradisional, kuahnya meresap parah ke tempe." },
+            { nama: "Rawon Brintik", jenis: "Rawon", koordinat: { lat: -7.9861, lng: 112.6311 }, alamat: "Jl. KH Ahmad Dahlan No.39, Sukoharjo", menu: "Rawon Daging Sapi + Lauk Paru Goreng", deskripsi: "Buka sejak 1942. Kuah hitam kluwek pekat dan potongan daging empuk rontok." },
+            { nama: "Ronde Titoni", jenis: "Wedang Tradisional", koordinat: { lat: -7.9842, lng: 112.6319 }, alamat: "Jl. Zainul Arifin No.17, Sukoharjo", menu: "Ronde Basah / Kering", deskripsi: "Kuah jahe pas menghangatkan malam kota Malang. Bola ronde kenyal isi kacang lumer." },
+            { nama: "Sate Ayam Bunul H. Paino", jenis: "Sate", koordinat: { lat: -7.9734, lng: 112.6412 }, alamat: "Jl. Hamid Rusdi No.21, Bunulrejo", menu: "Sate Ayam Tanpa Kulit", deskripsi: "Sate ayam empuk potongan tebal sejak 1970-an. Bumbu kacang halus meresap legit." },
+            { nama: "Heci Samaan", jenis: "Jajanan", koordinat: { lat: -7.9655, lng: 112.6342 }, alamat: "Jl. Jaksa Agung Suprapto No.50", menu: "Heci Spesial Isian Daging Sapi/Ayam", deskripsi: "Garing renyah di luar, lembut di dalam dengan protein sayur dan daging cincang." },
+            { nama: "Nasi Pecel & Tumpang Badut", jenis: "Nasi Pecel", koordinat: { lat: -7.9418, lng: 112.6155 }, alamat: "Jl. Candi Badut No.1A, Mojolangu", menu: "Nasi Pecel Tumpang + Lauk Paru", deskripsi: "Sambal tumpang menggunakan tempe semangit khas fermentasi otentik." },
+            { nama: "Keripik Buah Kane Sanan", jenis: "Keripik Buah", koordinat: { lat: -7.9538, lng: 112.6452 }, alamat: "Jl. Sanan No.30, Purwantoro", menu: "Keripik Apel Malang Original", deskripsi: "Memproses Apel Malang vacuum frying, garing tanpa merusak keaslian rasa buah." },
+            { nama: "Angsle & Ronde Mas Syarif", jenis: "Minuman Tradisional", koordinat: { lat: -7.9825, lng: 112.6308 }, alamat: "Area Alun-Alun Kota Malang", menu: "Wedang Angsle Spesial Ketan Premium", deskripsi: "Angsle creamy santan murni pas untuk menutup petualangan malam Alun-Alun." }
+        ];
+
+        let map;
+        let markers = [];
+
+        function loginUser() {
+            const user = document.getElementById("username").value.trim();
+            if(!user) { alert("Namanya diisi dulu yaa!"); return; }
+            localStorage.setItem("user_gempur", user);
+            document.getElementById("page-login").style.display = "none";
+            document.getElementById("navbar").style.display = "flex";
+            document.getElementById("user-display").innerText = user;
+            showPage('home');
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+            document.getElementById("page-" + pageId).style.display = "block";
+            if(pageId === 'basis') susunKotakBasis();
+            if(pageId === 'peta') setTimeout(initMap, 200);
+        }
+
+        // Generate Grid Kotak Kecil di Basis Data
+        function susunKotakBasis() {
+            const container = document.getElementById("basis-container");
+            container.innerHTML = "";
+            basisDataMakanan.forEach((makanan, index) => {
+                container.innerHTML += `
+                    <div class="basis-item-card">
+                        <h3>${makanan.nama}</h3>
+                        <span class="link-penasaran" onclick="bukaDetailMakanan(${index})">Penasaran?</span>
+                    </div>
+                `;
+            });
+        }
+
+        function bukaDetailMakanan(index) {
+            const m = basisDataMakanan[index];
+            document.getElementById("det-nama").innerText = m.nama;
+            document.getElementById("det-deskripsi").innerText = m.deskripsi;
+            document.getElementById("det-kalori").innerText = m.kalori;
+            document.getElementById("det-protein").innerText = m.protein;
+            document.getElementById("det-karbo").innerText = m.karbo;
+            document.getElementById("det-lemak").innerText = m.lemak;
+            showPage('detail-basis');
+        }
+
+        // Simulasi Kalkulator AI Terintegrasi Gagal/Berhasil
+        function prosesKalkulatorAI() {
+            const file = document.getElementById("calc-file").files[0];
+            const resBox = document.getElementById("calc-result");
+            resBox.style.display = "block";
+            
+            if(!file) {
+                resBox.innerHTML = `<div class="calc-card" style="border-color: var(--red);"><h3>sorry, we can't process ur photo huhu</h3></div>`;
+                return;
+            }
+
+            // Simulasi probabilitas deteksi AI acak (80% sukses, 20% gagal)
+            if(Math.random() < 0.2) {
+                resBox.innerHTML = `<div class="calc-card" style="border-color: var(--red);"><h3>sorry, we can't process ur photo huhu</h3></div>`;
+            } else {
+                resBox.innerHTML = `
+                    <div class="calc-card" style="background: var(--pink);">
+                        <h2>🍽 Hasil Prediksi AI Makronutrisi</h2>
+                        <div style="margin: 15px 0;">
+                            <p>🔥 <b>Estimasi Kalori:</b> ~320 - 450 kkal</p>
+                            <p>🥩 <b>Protein:</b> ~12 g</p>
+                            <p>🌾 <b>Karbohidrat:</b> ~40 g</p>
+                            <p>🥑 <b>Lemak:</b> ~14 g</p>
+                        </div>
+                        <p style="font-style: italic; font-size:14px;">Sistem berhasil membaca data visual makanan berdasarkan porsi rata-rata.</p>
+                    </div>`;
+            }
+        }
+
+        // Google Maps Initialization
+        function initMap() {
+            const malangCenter = { lat: -7.9750, lng: 112.6300 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: malangCenter,
+                styles: [
+                    { "featureType": "all", "elementType": "labels.text.fill", "stylers": [{"color": "#23395b"}] },
+                    { "featureType": "landscape", "elementType": "all", "stylers": [{"color": "#fff8ee"}] },
+                    { "featureType": "water", "elementType": "all", "stylers": [{"color": "#ffd8d8"}] }
+                ]
+            });
+            renderMarkers();
+        }
+
+        function renderMarkers() {
+            // Hapus penanda lama
+            markers.forEach(m => m.setMap(null));
+            markers = [];
+
+            databaseUMKM.forEach((umkm) => {
+                const marker = new google.maps.Marker({
+                    position: umkm.koordinat,
+                    map: map,
+                    title: umkm.nama
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div style="font-family: 'Space Grotesk'; color:#23395B; max-width:250px;">
+                            <h3 style="font-family:'Rubik'; color:#F05454;">${umkm.nama}</h3>
+                            <p><b>Jenis:</b> ${umkm.jenis}</p>
+                            <p><b>Menu:</b> ${umkm.menu}</p>
+                            <p style="margin-top:5px; font-size:13px;">${umkm.deskripsi}</p>
+                            <p style="font-size:11px; color:#555; margin-top:4px;">📍 ${umkm.alamat}</p>
+                        </div>`
+                });
+
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+
+                markers.push(marker);
+            });
+        }
+
+        // Trigger Popup Pertanyaan Tambah UMKM (+)
+        function triggerHiddenGemPrompt() {
+            document.getElementById("modal-prompt").style.display = "flex";
+        }
+
+        function openFormulirModal() {
+            closeModal('modal-prompt');
+            document.getElementById("modal-form").style.display = "flex";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        function simpanUMKMBaru() {
+            const nama = document.getElementById("form-nama").value;
+            const kuliner = document.getElementById("form-kuliner").value;
+            const alamat = document.getElementById("form-alamat").value;
+            const koordinatStr = document.getElementById("form-koordinat").value;
+            const menu = document.getElementById("form-menu").value;
+            const deskripsi = document.getElementById("form-deskripsi").value;
+
+            if(!nama || !koordinatStr) { alert("Minimal nama dan koordinat harus diisi ya!"); return; }
+
+            const parts = koordinatStr.split(",");
+            const lat = parseFloat(parts[0]);
+            const lng = parseFloat(parts[1]);
+
+            if(isNaN(lat) || isNaN(lng)) { alert("Format koordinat salah! Contoh: -7.98, 112.62"); return; }
+
+            databaseUMKM.push({
+                nama: nama, jenis: kuliner, alamat: alamat, 
+                koordinat: { lat: lat, lng: lng }, menu: menu, deskripsi: deskripsi
+            });
+
+            alert("Keren! Hidden gem barumu sudah terdaftar di sistem.");
+            closeModal('modal-form');
+            renderMarkers(); // Update penanda baru di peta
+        }
+
+        window.onload = function() {
+            const savedUser = localStorage.getItem("user_gempur");
+            if(savedUser) {
+                document.getElementById("page-login").style.display = "none";
+                document.getElementById("navbar").style.display = "flex";
+                document.getElementById("user-display").innerText = savedUser;
+                showPage('home');
+            }
+        }
+    </script>
 </body>
 </html>
